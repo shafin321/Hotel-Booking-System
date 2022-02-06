@@ -73,11 +73,13 @@
     <Build Include="dbo\Stored Procedures\spBookings_Insert.sql" />
     <Build Include="dbo\Stored Procedures\spBookings_Search.sql" />
     <Build Include="dbo\Stored Procedures\spBookings_CheckIn.sql" />
+    <Build Include="dbo\Stored Procedures\spRoomType_GetById.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\Script.PostDeployment.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HotelAppDB.publish.xml" />
+    <None Include="Publish Profiles\HotelAppDB.publish.xml" />
   </ItemGroup>
 </Project>

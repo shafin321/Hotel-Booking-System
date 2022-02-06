@@ -20,17 +20,11 @@ namespace HotelApp.Web
         [BindProperty(SupportsGet = true)]
         public DateTime EndDate { get; set; } = DateTime.Now.AddDays(1);
 
-        //[DataType(DataType.Date)]
-        //[BindProperty(SupportsGet = true)]
-        //public DateTime StartDate { get; set; } = DateTime.Now;
+        [DataType(DataType.Date)]
+        [BindProperty(SupportsGet = true)]
+        public bool SearchEnabled { get; set; } = false;
 
-        //[DataType(DataType.Date)]
-        //[BindProperty(SupportsGet = true)]
-        //public DateTime EndDate { get; set; } = DateTime.Now.AddDays(1);
-
-        //[BindProperty(SupportsGet = true)]
-        //public bool SearchEnabled { get; set; } = false;
-
+      
         public List<RoomTypeModel> AvailableRoomTypes { get; set; }
 
         public RoomSearchModel(IDatabaseData db)
@@ -41,26 +35,18 @@ namespace HotelApp.Web
         public IActionResult OnPost()
         {
 
-            return Page();
+            return RedirectToPage(new {SearchEnabled=true, StartDate=StartDate.ToString("yyyy-MM-dd"), EndDate=EndDate.ToString("yyyy-MM-dd")});
         }
 
         public void OnGet()
         {
-            AvailableRoomTypes = _db.GetAvailableRoomTypes(StartDate, EndDate);
-
+            if (SearchEnabled == true)
+            {
+                AvailableRoomTypes = _db.GetAvailableRoomTypes(StartDate, EndDate);
+            }
+         
         }
 
-        //public void OnGet()
-        //{
-        //    if (SearchEnabled == true)
-        //    {
-        //        AvailableRoomTypes = _db.GetAvailableRoomTypes(StartDate, EndDate);
-        //    }
-        //}
-
-        //public IActionResult OnPost()
-        //{
-        //    return RedirectToPage(new { SearchEnabled = true, StartDate, EndDate });
-        //}
+       
     }
 }
