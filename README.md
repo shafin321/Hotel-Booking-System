@@ -6,7 +6,7 @@ Its web and desktop application book a room in a hotel, a customer must check th
 * SQL
 * Razor Page
 * WPF
-* SQL Server with Dapper
+* Microsoft SQL Server with Dapper
 * Store Procedure
 * Search Functionality 
 * Online hotel reservation
